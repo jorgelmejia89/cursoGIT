@@ -1,0 +1,25 @@
+name: Triggers Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: '0 0 * * *'  # Ejecuta el workflow a medianoche UTC todos los días
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run a one-line script
+        run: echo "This workflow is triggered by a push, pull request, or schedule event."
+
+      - name: Print current date and time
+        run: date
